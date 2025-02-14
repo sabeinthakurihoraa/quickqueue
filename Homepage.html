@@ -17,20 +17,22 @@
             background-color: #fff7ef;
         }
 
-        /* Header Styling */
-        .header {
-            display: flex;
-            align-items: center;
-            padding: 15px 20px;
-            background-color: #1f5b83;
-            color: white;
-        }
 
-        .title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-right: 20px;
-        }
+        /* Header Styling */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;  /* Increase padding */
+    background-color: #1f5b83;
+    color: white;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-right: 40px;  /* Increase margin */
+}
+
 
         /* Navigation links */
         .nav {
@@ -41,7 +43,7 @@
         .nav a {
             color: white;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 24px;
             transition: color 0.3s;
         }
 
@@ -80,6 +82,39 @@
     }
 }
 
+/* New large sentence styling */
+.large-sentence {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    text-align:left;
+    margin-top: 40px;
+}
+
+/* Authentication Buttons Styling */
+.auth-buttons {
+    margin-left: auto; /* Align buttons to the right */
+    display: flex;
+    gap: 20px;
+}
+
+.auth-buttons .btn {
+    background-color: #d1e8ff;
+    color: #1f5b83;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.auth-buttons .btn:hover {
+    background-color: #1f5b83;
+    color: white;
+}
+
+
     </style>
 </head>
 <body>
@@ -94,7 +129,17 @@
             <a href="#">Services</a>
             <a href="#">Contact</a>
         </nav>
+        <!-- Login/Signup Buttons -->
+<div class="auth-buttons">
+    <a href="login.html" class="btn">Login</a>
+    <a href="signup.html" class="btn">Signup</a>
+</div>
+
     </div>
+    <!-- Large Sentence -->
+<div class="large-sentence">
+    Welcome to QuickQueue – your one-stop solution for seamless service access and queue management, anytime and anywhere!
+</div>
 
 </body>
 </html>
