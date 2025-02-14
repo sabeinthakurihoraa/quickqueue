@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Hospitals - QuickQueue</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Font Awesome for icons -->
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1506774518161-b710d10e2733?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Dark overlay + background image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Ensures the background stays fixed while scrolling */
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Styling */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #2373c9, #1f5b83); /* Solid header color */
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000; /* Ensures the header stays on top */
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .nav {
+            display: flex;
+            gap: 25px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #2a4d72;
+        }
+
+        .title a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .title a:hover {
+            color: #2a4d72;
+        }
+
+        /* Token Icon in Header */
+        .token-icon-header {
+            display: none; /* Hidden by default */
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .token-icon-header:hover {
+            transform: scale(1.2); /* Slightly enlarge on hover */
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .title {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            .nav {
+                flex-direction: column;
+                gap: 10px;
+                position: static;
+                transform: none;
+            }
+
+            .nav a {
+                font-size: 16px;
+            }
+        }
+
+        /* Page Content Styling */
+        .page-content {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            text-align: left;
+            line-height: 1.6;
+            transition: filter 0.3s; /* Smooth transition for blur effect */
+        }
+
+        .page-content h1 {
+            color: white;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .page-content ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .page-content ul li {
+            font-size: 24px;
+            margin-bottom: 15px;
+            transition: transform 0.3s, font-size 0.3s;
+            cursor: pointer;
+        }
+
+        .page-content ul li:hover {
+            transform: scale(1.05); /* Pop out effect */
+            font-size: 26px; /* Slightly larger text */
+        }
+
+        /* Blur Effect */
+        .blur {
+            filter: blur(5px); /* Apply blur effect */
+        }
+
+        /* Token Popup Styling */
+        .token-popup {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #3674B5;
+            border: none;
+            border-radius: 10px;
+            padding: 20px 40px;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 1001; /* Ensure it appears above everything */
+        }
+
+        .token-popup i {
+            margin-right: 10px; /* Space between icon and text */
+        }
+
+        .token-popup:hover {
+            background-color: #2a4d72; /* Darker on hover */
+        }
+
+        /* Overlay Styling */
+        .overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            z-index: 1000; /* Ensure it appears below the popup but above the content */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <div class="title">
+            <a href="Homepage.html">QuickQueue</a>
+        </div>
+        <nav class="nav">
+            <a href="Client.html">Dashboard</a>
+            <a href="Homepage.html">Home</a>
+            <a href="AboutUs.html">About Us</a>
+            <a href="Services.html">Services</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+        <!-- Token Icon in Header -->
+        <div id="tokenIconHeader" class="token-icon-header" onclick="alert('Token clicked!')">
+            <i class="fas fa-ticket-alt"></i>
+        </div>
+    </div>
+
+    <!-- Page Content Section -->
+    <div class="page-content">
+        <h1>List of Hospitals</h1>
+        <ul>
+            <li onclick="showTokenPopup()">APF Hospital</li>
+            <li onclick="showTokenPopup()">Nepal Army Hospital</li>
+            <li onclick="showTokenPopup()">Bir Hospital</li>
+            <li onclick="showTokenPopup()">Chhauni Hospital</li>
+        </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="overlay" onclick="closeTokenPopup()"></div>
+
+    <!-- Token Popup Button -->
+    <button id="tokenPopup" class="token-popup" onclick="handleTokenClick()">
+        <i class="fas fa-ticket-alt"></i> Get a Token
+    </button>
+
+    <script>
+        // Function to show the token popup and blur the background
+        function showTokenPopup() {
+            const pageContent = document.querySelector('.page-content');
+            const tokenPopup = document.getElementById('tokenPopup');
+            const overlay = document.getElementById('overlay');
+
+            // Apply blur effect
+            pageContent.classList.add('blur');
+
+            // Show the overlay and token popup
+            overlay.style.display = 'block';
+            tokenPopup.style.display = 'block';
+        }
+
+        // Function to handle token button click
+        function handleTokenClick() {
+            alert('Token generated!'); // Replace this with your token generation logic
+            closeTokenPopup();
+
+            // Show the token icon in the header
+            const tokenIconHeader = document.getElementById('tokenIconHeader');
+            tokenIconHeader.style.display = 'block';
+        }
+
+        // Function to close the token popup and remove blur
+        function closeTokenPopup() {
+            const pageContent = document.querySelector('.page-content');
+            const tokenPopup = document.getElementById('tokenPopup');
+            const overlay = document.getElementById('overlay');
+
+            // Remove blur effect
+            pageContent.classList.remove('blur');
+
+            // Hide the overlay and token popup
+            overlay.style.display = 'none';
+            tokenPopup.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

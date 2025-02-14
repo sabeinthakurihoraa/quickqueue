@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>Contact Us - QuickQueue</title>
     <style>
         /* Basic Reset */
         * {
@@ -14,34 +14,46 @@
         }
 
         body {
-            background-color: #fff7ef;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1519248200454-8f2590ed22b7?q=80&w=2075&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Dark overlay + background image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Ensures the background stays fixed while scrolling */
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Header Styling */
         .header {
             display: flex;
             align-items: center;
+            justify-content: space-between;
             padding: 15px 30px;
-            background-color: #3674B5;
+            background: linear-gradient(135deg, #2373c9, #1f5b83); /* Solid header color */
             color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000; /* Ensures the header stays on top */
         }
 
         .title {
             font-size: 32px;
             font-weight: bold;
-            margin-right: 40px;
         }
 
-        /* Navigation links */
         .nav {
             display: flex;
-            gap: 15px;
+            gap: 25px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .nav a {
             color: white;
             text-decoration: none;
-            font-size: 24px;
+            font-size: 18px;
             transition: color 0.3s;
         }
 
@@ -49,7 +61,6 @@
             color: #2a4d72;
         }
 
-        /* Title as a link */
         .title a {
             color: white;
             text-decoration: none;
@@ -67,13 +78,14 @@
 
             .title {
                 font-size: 20px;
-                margin-right: 0;
                 margin-bottom: 10px;
             }
 
             .nav {
                 flex-direction: column;
                 gap: 10px;
+                position: static;
+                transform: none;
             }
 
             .nav a {
@@ -83,15 +95,56 @@
 
         /* Contact Content Styling */
         .contact-content {
-            font-size: 20px;
-            color: #333;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
             text-align: left;
-            margin: 40px;
             line-height: 1.6;
+        }
+
+        .contact-content h1 {
+            color: white;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .contact-content p {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .contact-content ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .contact-content ul li {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .contact-content ul li::before {
+            content: "•";
+            color: #3674B5;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .contact-content a {
+            color: #3674B5;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-content a:hover {
+            color: #2a4d72;
         }
     </style>
 </head>
 <body>
+    <!-- Header Section -->
     <div class="header">
         <div class="title">
             <a href="Homepage.html">QuickQueue</a>
@@ -103,15 +156,17 @@
             <a href="Contact.html">Contact</a>
         </nav>
     </div>
+
     <!-- Contact Section -->
     <div class="contact-content">
-        <h1>Contact Us</h1>
-        <p>Have any questions or need assistance? Reach out to us through the following channels:</p>
+        <h1>Get in Touch</h1>
+        <p>We’re here to help! Whether you have a question, need support, or just want to say hello, we’d love to hear from you. Reach out to us through any of the following ways:</p>
         <ul>
-            <li>Email: support@quickqueue.com</li>
-            <li>Phone: +123 456 7890</li>
-            <li>Address: 123 Queue Street, City, Country</li>
+            <li><strong>Email:</strong> <a href="mailto:support@quickqueue.com">support@quickqueue.com</a></li>
+            <li><strong>Phone:</strong> <a href="tel:+1234567890">+123 456 7890</a></li>
+            <li><strong>Address:</strong> 123 Queue Street, City, Country</li>
         </ul>
+        <p>Our team is available Monday through Friday, 9 AM to 5 PM. We look forward to connecting with you!</p>
     </div>
 </body>
 </html>

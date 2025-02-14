@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>About Us - QuickQueue</title>
     <style>
         /* Basic Reset */
         * {
@@ -14,34 +14,46 @@
         }
 
         body {
-            background-color: #fff7ef;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1584614207146-a64524f5806a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Dark overlay + background image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Ensures the background stays fixed while scrolling */
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Header Styling */
         .header {
             display: flex;
             align-items: center;
+            justify-content: space-between;
             padding: 15px 30px;
-            background-color: #3674B5;
+            background: linear-gradient(135deg, #2373c9, #1f5b83); /* Solid header color */
             color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000; /* Ensures the header stays on top */
         }
 
         .title {
             font-size: 32px;
             font-weight: bold;
-            margin-right: 40px;
         }
 
-        /* Navigation links */
         .nav {
             display: flex;
-            gap: 15px;
+            gap: 25px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .nav a {
             color: white;
             text-decoration: none;
-            font-size: 24px;
+            font-size: 18px;
             transition: color 0.3s;
         }
 
@@ -49,7 +61,6 @@
             color: #2a4d72;
         }
 
-        /* Title as a link */
         .title a {
             color: white;
             text-decoration: none;
@@ -67,13 +78,14 @@
 
             .title {
                 font-size: 20px;
-                margin-right: 0;
                 margin-bottom: 10px;
             }
 
             .nav {
                 flex-direction: column;
                 gap: 10px;
+                position: static;
+                transform: none;
             }
 
             .nav a {
@@ -81,17 +93,29 @@
             }
         }
 
-        /* About Content Styling */
-        .about-content {
-            font-size: 20px;
-            color: #333;
+        /* About Us Content Styling */
+        .aboutus-content {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
             text-align: left;
-            margin: 40px;
             line-height: 1.6;
+        }
+
+        .aboutus-content h1 {
+            color: white;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .aboutus-content p {
+            font-size: 20px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
+    <!-- Header Section -->
     <div class="header">
         <div class="title">
             <a href="Homepage.html">QuickQueue</a>
@@ -103,11 +127,11 @@
             <a href="Contact.html">Contact</a>
         </nav>
     </div>
-    <!-- About Section -->
-    <div class="about-content">
+
+    <!-- About Us Section -->
+    <div class="aboutus-content">
         <h1>About QuickQueue</h1>
-        <p>QuickQueue is designed to provide seamless service access and queue management. Our mission is to reduce wait times and enhance customer experience through smart technology.</p>
-        <p>With QuickQueue, you can book service slots from anywhere, ensuring a hassle-free experience at hospitals, government offices, and other service centers.</p>
+        <p>QuickQueue is designed to provide seamless service access and queue management. Our mission is to reduce wait times and enhance customer experience through smart technology. With QuickQueue, you can book service slots from anywhere, ensuring a hassle-free experience at hospitals, government offices, and other service centers.</p>
     </div>
 </body>
 </html>

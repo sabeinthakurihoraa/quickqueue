@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - QuickQueue</title>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Font Awesome for icons -->
     <style>
         /* Basic Reset */
         * {
@@ -14,7 +15,7 @@
         }
 
         body {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1528406745358-6c3112259eb9?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Darkened background image */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1519248200454-8f2590ed22b7?q=80&w=2075&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Dark overlay + background image */
             background-size: cover;
             background-position: center;
             background-attachment: fixed; /* Ensures the background stays fixed while scrolling */
@@ -30,7 +31,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 15px 30px;
-            background: linear-gradient(135deg, #2373c9, #1f5b83);
+            background: linear-gradient(135deg, #2373c9, #1f5b83); /* Solid header color */
             color: white;
             position: sticky;
             top: 0;
@@ -93,53 +94,72 @@
             }
         }
 
-        /* Services Content Styling */
-        .service-content {
+        /* Page Content Styling */
+        .page-content {
             max-width: 800px;
             margin: 40px auto;
             padding: 20px;
-            text-align: left;
+            text-align: center; /* Center-align content */
             line-height: 1.6;
         }
 
-        .service-content h1 {
+        .page-content h1 {
             color: white;
             font-size: 36px;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
         }
 
-        .service-content p {
+        .page-content p {
             font-size: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
         }
 
-        .service-content ul {
-            list-style-type: none;
-            padding: 0;
+        /* Button Container */
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
         }
 
-        .service-content ul li {
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-
-        .service-content ul li::before {
-            content: "•";
-            color: #3674B5;
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
-        }
-
-        .service-content a {
-            color: #3674B5;
+        /* Button Styling */
+        .button {
+            flex: 1;
+            min-width: 200px;
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+            border: 2px solid #3674B5;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            color: white;
             text-decoration: none;
-            transition: color 0.3s;
+            font-size: 24px;
+            transition: background-color 0.3s, transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
         }
 
-        .service-content a:hover {
-            color: #2a4d72;
+        .button i {
+            font-size: 40px; /* Icon size */
+            color: #3674B5;
+        }
+
+        .button:hover {
+            background-color: rgba(54, 116, 181, 0.2); /* Slightly darker on hover */
+            transform: translateY(-5px); /* Lift effect */
+        }
+
+        @media (max-width: 768px) {
+            .button-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .button {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -157,17 +177,26 @@
         </nav>
     </div>
 
-    <!-- Services Section -->
-    <div class="service-content">
-        <h1>Our Services</h1>
-        <p>QuickQueue provides efficient queue management solutions for various sectors, ensuring minimal wait times and maximum convenience. Here's how we can help:</p>
-        <ul>
-            <li><strong>Online Appointment Scheduling:</strong> Book your spot in advance, anytime, anywhere.</li>
-            <li><strong>Real-time Queue Status Updates:</strong> Stay informed about your wait time in real-time.</li>
-            <li><strong>Fast and Secure Digital Check-ins:</strong> Skip the line with quick and secure digital check-ins.</li>
-            <li><strong>Priority Booking for Special Needs:</strong> We cater to those who need extra care and attention.</li>
-        </ul>
-        <p>Our goal is to make your experience seamless and stress-free. Let us handle the queue so you can focus on what matters most!</p>
+    <!-- Page Content Section -->
+    <div class="page-content">
+        <h1>Standing Still is Boringggg</h1>
+        <p>Be in a queue Online</p>
+
+        <!-- Button Container -->
+        <div class="button-container">
+            <a href="Hospitals.html" class="button">
+                <i class="fas fa-hospital"></i> <!-- Hospital Icon -->
+                Hospitals
+            </a>
+            <a href="#" class="button">
+                <i class="fas fa-landmark"></i> <!-- Government Office Icon -->
+                Government Offices
+            </a>
+            <a href="#" class="button">
+                <i class="fas fa-bus"></i> <!-- Transportation Icon -->
+                Transportation
+            </a>
+        </div>
     </div>
 </body>
 </html>
