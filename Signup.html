@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #fff7ef;
+        }
+
+        /* Header Styling */
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #1f5b83;
+            color: white;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-right: 40px;
+        }
+
+        /* Navigation links */
+        .nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #d1e8ff;
+        }
+
+        /* Title as a link */
+        .title a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .title a:hover {
+            color: #d1e8ff;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .title {
+                font-size: 20px;
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav a {
+                font-size: 16px;
+            }
+        }
+
+        /* Form Styling */
+        .signup-form {
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .signup-form h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .signup-form label {
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .signup-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .signup-form .btn {
+            background-color: #1f5b83;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            text-align: center;
+            display: block;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .signup-form .btn:hover {
+            background-color: #d1e8ff;
+            color: #1f5b83;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="title">
+            <a href="Homepage.html">QuickQueue</a>
+        </div>
+        <nav class="nav">
+            <a href="Homepage.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </div>
+
+    <div class="signup-form">
+        <h2>Create an Account</h2>
+        <form action="#" method="POST">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <a href="#" class="btn">Sign Up</a>
+        </form>
+    </div>
+
+</body>
+</html>
