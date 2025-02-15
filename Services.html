@@ -148,10 +148,10 @@
     <!-- Header Section -->
     <div class="header">
         <div class="title">
-            <a href="Homepage.html">QuickQueue</a>
+            <a href="index.html">QuickQueue</a>
         </div>
         <nav class="nav">
-            <a href="Homepage.html">Home</a>
+            <a href="index.html">Home</a>
             <a href="AboutUs.html">About Us</a>
             <a href="Services.html">Services</a>
             <a href="Contact.html">Contact</a>
@@ -173,6 +173,11 @@
       <!-- Footer Section -->
 <footer class="footer">
     <p>Contact Us: 9876543210</p>
+    <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
 </footer>
 <style>
     /* Footer Styling */
@@ -186,6 +191,22 @@
 .footer p {
     margin-bottom: 10px;
     font-size: 14px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-links a {
+    color: white;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #2a4d72;
 }
 </style>
 </body>
