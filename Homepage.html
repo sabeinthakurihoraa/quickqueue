@@ -16,10 +16,15 @@
         }
 
         body {
-            background-color: #fff7ef;
-            color: #333;
-            overflow: hidden; /* Prevent scrolling during loading */
-        }
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1519248200454-8f2590ed22b7?q=80&w=2075&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; /* Ensure this is present */
+}
 
         /* Loading Screen */
         .loading-screen {
@@ -361,6 +366,15 @@
                 font-size: 18px;
             }
         }
+        .page-content {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+    line-height: 1.6;
+    flex: 1;
+    overflow: auto; /* Add this line */
+}
     </style>
 </head>
 <body>
@@ -486,6 +500,25 @@
                 }, 300);
             }
         });
+    </script>
+         <!-- Footer Section -->
+<footer class="footer">
+    <p>&copy; Contact Us: 9876543210</p>
+</footer>
+<style>
+    /* Footer Styling */
+.footer {
+    background: linear-gradient(135deg, #2373c9, #1f5b83);
+    padding: 20px;
+    text-align: center;
+    margin-top: auto; /* Push footer to the bottom */
+}
+
+.footer p {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+</style>
     </script>
 </body>
 </html>
