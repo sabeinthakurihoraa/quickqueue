@@ -6,14 +6,13 @@
     <link rel="icon" type="image/png" href="Logo.png">
     <title>QuickQueue - Home</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <!-- Add Firebase SDK -->
-     <script>
+    <script>
         if (error.code === 'auth/popup-blocked') {
-    alert('Popup blocked! Please allow popups for this site and try again.');
-} else if (error.code === 'auth/popup-closed-by-user') {
-    alert('Popup closed! Please complete the login process.');
-}
-     </script>
+            alert('Popup blocked! Please allow popups for this site and try again.');
+        } else if (error.code === 'auth/popup-closed-by-user') {
+            alert('Popup closed! Please complete the login process.');
+        }
+    </script>
     <script type="module">
         // Import Firebase modules
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -21,13 +20,13 @@
 
         // Firebase configuration (replace with your Firebase project config)
         const firebaseConfig = {
-  apiKey: "AIzaSyDrp3KAgsCzYRTwMOggtV3HGHklCE2oZZI",
-  authDomain: "quickqueue-404.firebaseapp.com",
-  projectId: "quickqueue-404",
-  storageBucket: "quickqueue-404.firebasestorage.app",
-  messagingSenderId: "1023970385567",
-  appId: "1:1023970385567:web:0e5f4e0406d3f47c504caa"
-};
+            apiKey: "AIzaSyDrp3KAgsCzYRTwMOggtV3HGHklCE2oZZI",
+            authDomain: "quickqueue-404.firebaseapp.com",
+            projectId: "quickqueue-404",
+            storageBucket: "quickqueue-404.appspot.com",
+            messagingSenderId: "1023970385567",
+            appId: "1:1023970385567:web:0e5f4e0406d3f47c504caa"
+        };
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
@@ -82,7 +81,9 @@
         body {
             background-color: #fff7ef;
             color: #333;
-            overflow: hidden; /* Prevent scrolling during loading */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure body takes full viewport height */
         }
 
         /* Loading Screen */
@@ -425,6 +426,20 @@
                 font-size: 18px;
             }
         }
+
+        /* Footer Styling */
+        .footer {
+            background: linear-gradient(135deg, #2373c9, #1f5b83);
+            padding: 20px;
+            text-align: center;
+            margin-top: auto; /* Push footer to the bottom */
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -461,6 +476,11 @@
                 <a href="Services.html" class="cta-btn">Explore Services</a>
             </div>
         </div>
+
+        <!-- Footer Section -->
+        <footer class="footer">
+            <p>Contact Us: 9876543210</p>
+        </footer>
     </div>
 </body>
 </html>
