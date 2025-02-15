@@ -231,11 +231,11 @@
     <!-- Header Section -->
     <div class="header">
         <div class="title">
-            <a href="Homepage.html">QuickQueue</a>
+            <a href="index.html">QuickQueue</a>
         </div>
         <nav class="nav">
             <a href="Client.html">Dashboard</a>
-            <a href="Homepage.html">Home</a>
+            <a href="index.html">Home</a>
             <a href="AboutUs.html">About Us</a>
             <a href="Services.html">Services</a>
             <a href="Contact.html">Contact</a>
@@ -298,22 +298,38 @@
         }
 
         // Function to handle token button click
-        function handleTokenClick() {
-            const tokenPopup = document.getElementById('tokenPopup');
-            tokenPopup.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating Token...';
-            tokenPopup.disabled = true;
+        // Function to handle token button click
+function handleTokenClick() {
+    const tokenPopup = document.getElementById('tokenPopup');
+    tokenPopup.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating Token...';
+    tokenPopup.disabled = true;
 
-            setTimeout(() => {
-                alert('Token generated!'); // Replace with actual token generation logic
-                closeTokenPopup();
-                tokenPopup.innerHTML = '<i class="fas fa-ticket-alt"></i> Get a Token';
-                tokenPopup.disabled = false;
+    // Send a POST request to the server
+    fetch('/generate-token', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({}), // No data needed in this example
+    })
+    .then(response => response.text())
+    .then(message => {
+        alert(message); // Show success message
+        closeTokenPopup();
+        tokenPopup.innerHTML = '<i class="fas fa-ticket-alt"></i> Get a Token';
+        tokenPopup.disabled = false;
 
-                // Show the token icon in the header
-                const tokenIconHeader = document.getElementById('tokenIconHeader');
-                tokenIconHeader.style.display = 'block';
-            }, 2000); // Simulate a 2-second delay
-        }
+        // Show the token icon in the header
+        const tokenIconHeader = document.getElementById('tokenIconHeader');
+        tokenIconHeader.style.display = 'block';
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Failed to generate token');
+        tokenPopup.innerHTML = '<i class="fas fa-ticket-alt"></i> Get a Token';
+        tokenPopup.disabled = false;
+    });
+}
 
         // Function to close the token popup and remove blur
         function closeTokenPopup() {
