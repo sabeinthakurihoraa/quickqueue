@@ -155,7 +155,7 @@
             transform: translate(-50%, -50%);
             background-color: #3674B5;
             border: none;
-            border-radius: 10px;
+            border-radius: 40px;
             padding: 20px 40px;
             color: white;
             font-size: 24px;
@@ -265,6 +265,11 @@
           <!-- Footer Section -->
 <footer class="footer">
     <p>Contact Us: 9876543210</p>
+    <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
 </footer>
 <style>
     /* Footer Styling */
@@ -278,6 +283,22 @@
 .footer p {
     margin-bottom: 10px;
     font-size: 14px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-links a {
+    color: white;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #2a4d72;
 }
 </style>
 </body>
