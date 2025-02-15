@@ -124,43 +124,62 @@
 
         /* Button Styling */
         .button {
-            flex: 1;
-            min-width: 200px;
-            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
-            border: 2px solid #3674B5;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            color: white;
-            text-decoration: none;
-            font-size: 24px;
-            transition: background-color 0.3s, transform 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
+    flex: 1;
+    min-width: 200px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+}
 
-        .button i {
-            font-size: 40px; /* Icon size */
-            color: #3674B5;
-        }
+.button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(54, 116, 181, 0.4), transparent);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease;
+    z-index: 0;
+}
 
-        .button:hover {
-            background-color: rgba(54, 116, 181, 0.2); /* Slightly darker on hover */
-            transform: translateY(-5px); /* Lift effect */
-        }
+.button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
 
-        @media (max-width: 768px) {
-            .button-container {
-                flex-direction: column;
-                align-items: center;
-            }
+.button:hover {
+    border-color: #3674B5;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(54, 116, 181, 0.3);
+}
 
-            .button {
-                width: 100%;
-            }
-        }
+.button i {
+    font-size: 40px;
+    color: #3674B5;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.button:hover i {
+    transform: rotate(360deg);
+    color: #2a4d72;
+}
+
+.button span {
+    z-index: 1;
+}
     </style>
 </head>
 <body>
@@ -198,5 +217,44 @@
             </a>
         </div>
     </div>
+     <!-- Footer Section -->
+<footer class="footer">
+    <p>&copy; 2023 QuickQueue. All rights reserved.</p>
+    <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+</footer>
+<style>
+    /* Footer Styling */
+.footer {
+    background: linear-gradient(135deg, #2373c9, #1f5b83);
+    padding: 20px;
+    text-align: center;
+    margin-top: auto; /* Push footer to the bottom */
+}
+
+.footer p {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-links a {
+    color: white;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #2a4d72;
+}
+</style>
 </body>
 </html>
