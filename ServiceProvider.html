@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Logo.png">
+    <title>Services - QuickQueue</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Font Awesome for icons -->
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1519248200454-8f2590ed22b7?q=80&w=2075&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Dark overlay + background image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Ensures the background stays fixed while scrolling */
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Styling */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #2373c9, #1f5b83); /* Solid header color */
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000; /* Ensures the header stays on top */
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .nav {
+            display: flex;
+            gap: 25px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #2a4d72;
+        }
+
+        .title a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .title a:hover {
+            color: #2a4d72;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .title {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            .nav {
+                flex-direction: column;
+                gap: 10px;
+                position: static;
+                transform: none;
+            }
+
+            .nav a {
+                font-size: 16px;
+            }
+        }
+
+        /* Page Content Styling */
+        .page-content {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            text-align: center; /* Center-align content */
+            line-height: 1.6;
+        }
+
+        .page-content h1 {
+            color: white;
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .page-content p {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+
+        /* Button Container */
+        .button-container {
+            display: flex;
+            justify-content: center; /* Center the two boxes */
+            gap: 40px; /* Space between the two boxes */
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+
+        /* Box Styling */
+        .box {
+            flex: 1;
+            min-width: 300px; /* Minimum width for each box */
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid transparent;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .box::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(54, 116, 181, 0.4), transparent);
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.5s ease;
+            z-index: 0;
+        }
+
+        .box:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .box:hover {
+            border-color: #3674B5;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(54, 116, 181, 0.3);
+        }
+
+        .box span {
+            display: block;
+            font-size: 48px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #3674B5;
+        }
+
+        /* Footer Styling */
+        .footer {
+            background: linear-gradient(135deg, #2373c9, #1f5b83);
+            padding: 20px;
+            text-align: center;
+            margin-top: auto; /* Push footer to the bottom */
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <div class="title">
+            <a href="Homepage.html">QuickQueue</a>
+        </div>
+        <nav class="nav">
+            <a href="Homepage.html">Home</a>
+            <a href="AboutUs.html">About Us</a>
+            <a href="Services.html">Services</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+    </div>
+
+    <!-- Page Content Section -->
+    <div class="page-content">
+        <h1>Service Status</h1>
+        <p>Check the current queue and token status.</p>
+
+        <!-- Box Container -->
+        <div class="button-container">
+            <!-- Queue Count Box -->
+            <div class="box">
+                Queue Count
+                <span>25</span> <!-- Replace with dynamic value if needed -->
+            </div>
+
+            <!-- Current Token Used Box -->
+            <div class="box">
+                Current Token Used
+                <span>12</span> <!-- Replace with dynamic value if needed -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>Contact Us: 9876543210</p>
+    </footer>
+</body>
+</html>
