@@ -344,6 +344,22 @@ function handleTokenClick() {
             overlay.style.display = 'none';
             tokenPopup.style.display = 'none';
         }
+
+
+        fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+        console.error('Error reading file:', err);
+        return res.status(500).send('Error reading file');
+    }
+
+    // Log the file content for debugging
+    console.log('File Content:', data);
+
+    // Count the number of lines
+    const lineCount = data.split('\n').filter(line => line.trim() !== '').length;
+    console.log('Line Count:', lineCount); // Log the line count for debugging
+    res.status(200).json({ count: lineCount });
+});
     </script>
 </body>
 </html>
