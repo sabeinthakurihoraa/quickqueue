@@ -74,18 +74,27 @@
             color: #2a4d72;
         }
 
-        /* Token Icon in Header */
         .token-icon-header {
-            display: none; /* Hidden by default */
-            font-size: 24px;
-            color: white;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
+    display: none; /* Hidden by default */
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    align-items: center; /* Center items vertically */
+    gap: 8px; /* Space between queue count and token number */
+}
 
-        .token-icon-header:hover {
-            transform: scale(1.2); /* Slightly enlarge on hover */
-        }
+.token-icon-header:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#tokenNumber, #queueCount {
+    font-weight: bold;
+}
 
         @media (max-width: 768px) {
             .header {
@@ -240,10 +249,14 @@
             <a href="Services.html">Services</a>
             <a href="Contact.html">Contact</a>
         </nav>
+        <!-- Token and Queue Count in Header -->
+<div id="tokenIconHeader" class="token-icon-header" style="display: none;">
+    <span id="queueCount">0</span> in queue • Token: <span id="tokenNumber">0</span>
+</div>
         <!-- Token Icon in Header -->
-        <div id="tokenIconHeader" class="token-icon-header" onclick="alert('Token clicked!')">
-            <i class="fas fa-ticket-alt"></i>
-        </div>
+<div id="tokenIconHeader" class="token-icon-header" style="display: none;">
+    Token no: <span id="tokenNumber">0</span>
+</div>
     </div>
 
     <!-- Page Content Section -->
@@ -283,22 +296,21 @@
     </footer>
 
     <script>
-        // Function to show the token popup and blur the background
-        function showTokenPopup() {
-            const pageContent = document.querySelector('.page-content');
-            const tokenPopup = document.getElementById('tokenPopup');
-            const overlay = document.getElementById('overlay');
+ // Function to show the token popup and blur the background
+function showTokenPopup() {
+    const pageContent = document.querySelector('.page-content');
+    const tokenPopup = document.getElementById('tokenPopup');
+    const overlay = document.getElementById('overlay');
 
-            // Apply blur effect
-            pageContent.classList.add('blur');
+    // Apply blur effect
+    pageContent.classList.add('blur');
 
-            // Show the overlay and token popup
-            overlay.style.display = 'block';
-            tokenPopup.style.display = 'block';
-        }
+    // Show the overlay and token popup
+    overlay.style.display = 'block';
+    tokenPopup.style.display = 'block';
+}
 
-        // Function to handle token button click
-        // Function to handle token button click
+// Function to handle token button click
 function handleTokenClick() {
     const tokenPopup = document.getElementById('tokenPopup');
     tokenPopup.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating Token...';
@@ -312,54 +324,66 @@ function handleTokenClick() {
         },
         body: JSON.stringify({}), // No data needed in this example
     })
-    .then(response => response.text())
-    .then(message => {
-        alert(message); // Show success message
-        closeTokenPopup();
-        tokenPopup.innerHTML = '<i class="fas fa-ticket-alt"></i> Get a Token';
-        tokenPopup.disabled = false;
+    .then(response => response.json())
+    .then(data => {
+        const { sn, queueCount } = data;
 
-        // Show the token icon in the header
+        // Update the token number and queue count in the header
+        const tokenNumberElement = document.getElementById('tokenNumber');
+        const queueCountElement = document.getElementById('queueCount');
+
+        tokenNumberElement.textContent = sn;
+        queueCountElement.textContent = queueCount;
+
+        // Show the token number and queue count in the header
         const tokenIconHeader = document.getElementById('tokenIconHeader');
-        tokenIconHeader.style.display = 'block';
+        tokenIconHeader.style.display = 'flex'; // Use flex to align items
     })
     .catch(error => {
         console.error('Error:', error);
         alert('Failed to generate token');
+    })
+    .finally(() => {
         tokenPopup.innerHTML = '<i class="fas fa-ticket-alt"></i> Get a Token';
         tokenPopup.disabled = false;
     });
 }
 
-        // Function to close the token popup and remove blur
-        function closeTokenPopup() {
-            const pageContent = document.querySelector('.page-content');
-            const tokenPopup = document.getElementById('tokenPopup');
-            const overlay = document.getElementById('overlay');
+// Function to close the token popup and remove blur
+function closeTokenPopup() {
+    const pageContent = document.querySelector('.page-content');
+    const tokenPopup = document.getElementById('tokenPopup');
+    const overlay = document.getElementById('overlay');
 
-            // Remove blur effect
-            pageContent.classList.remove('blur');
+    // Remove blur effect
+    pageContent.classList.remove('blur');
 
-            // Hide the overlay and token popup
-            overlay.style.display = 'none';
-            tokenPopup.style.display = 'none';
-        }
+    // Hide the overlay and token popup
+    overlay.style.display = 'none';
+    tokenPopup.style.display = 'none';
+}
 
+// Function to fetch and update the queue count
+function updateQueueCount() {
+    fetch('/queue-count')
+        .then(response => response.json())
+        .then(data => {
+            const queueCount = data.count;
+            const queueCountElement = document.getElementById('queueCount');
+            if (queueCountElement) {
+                queueCountElement.textContent = queueCount;
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching queue count:', error);
+        });
+}
 
-        fs.readFile(filePath, 'utf8', (err, data) => {
-    if (err) {
-        console.error('Error reading file:', err);
-        return res.status(500).send('Error reading file');
-    }
+// Call updateQueueCount every 3 seconds
+setInterval(updateQueueCount, 3000);
 
-    // Log the file content for debugging
-    console.log('File Content:', data);
-
-    // Count the number of lines
-    const lineCount = data.split('\n').filter(line => line.trim() !== '').length;
-    console.log('Line Count:', lineCount); // Log the line count for debugging
-    res.status(200).json({ count: lineCount });
-});
+// Initial call to update the queue count when the page loads
+updateQueueCount();
     </script>
 </body>
 </html>
